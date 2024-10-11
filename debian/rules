@@ -1,4 +1,17 @@
 #!/usr/bin/make -f
 
+# exclude verifier/graph.go as long as github.com/zmap/zcertificate is
+# not available in the repos
+# https://lists.debian.org/debian-go/2021/06/msg00064.html
+export DH_GOLANG_EXCLUDES := verifier
+export DH_VERBOSE := 1
+
 %:
-	dh $@
+	dh $@ --builddirectory=_build --buildsystem=golang --with=golang
+
+override_dh_auto_test:
+
+override_dh_auto_install:
+	dh_auto_install -- --no-binaries
+	find debian/golang-github-zmap-zcrypto-dev/usr/share/gocode/src/github.com/zmap/zcrypto/ct/asn1/ \
+	    -type f -exec chmod -x {} \;

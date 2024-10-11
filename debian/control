@@ -1,15 +1,62 @@
-Source: template-repository
-Section: unknown
+Source: golang-github-zmap-zcrypto
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Peymaneh Nejad <p.nejad@posteo.de>,
+           Reinhard Tartler <siretart@tauware.de>
+Section: golang
+Testsuite: autopkgtest-pkg-go
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Build-Depends: debhelper-compat (= 13),
+               dh-golang,
+               golang-any,
+               golang-github-mreiferson-go-httpclient-dev,
+               golang-github-op-go-logging-dev,
+               golang-github-sirupsen-logrus-dev,
+               golang-github-stretchr-testify-dev,
+               golang-github-weppos-publicsuffix-go-dev,
+               golang-github-zmap-rc2-dev,
+               golang-golang-x-crypto-dev,
+               golang-golang-x-net-dev,
+               golang-gopkg-check.v1-dev,
+               golang-gopkg-yaml.v2-dev
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-zmap-zcrypto
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-zmap-zcrypto.git
+Homepage: https://github.com/zmap/zcrypto
+Rules-Requires-Root: no
+XS-Go-Import-Path: github.com/zmap/zcrypto
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: golang-github-zmap-zcrypto-dev
+Architecture: all
+Depends: golang-github-mreiferson-go-httpclient-dev,
+         golang-github-op-go-logging-dev,
+         golang-github-sirupsen-logrus-dev,
+         golang-github-stretchr-testify-dev,
+         golang-github-weppos-publicsuffix-go-dev,
+         golang-github-zmap-rc2-dev,
+         golang-golang-x-crypto-dev,
+         golang-golang-x-net-dev,
+         golang-gopkg-check.v1-dev,
+         golang-gopkg-yaml.v2-dev,
+         ${misc:Depends}
+Description: Liberal Go TLS + X.509 Library for Research
+ ZCrypto contains specialized versions of tls and x509. It is primarily
+ based on Golang's TLS library
+ (https://github.com/golang/go/blob/master/src/crypto/tls)
+ .
+ Important note:
+ .
+ ZCrypto is a research library, designed to be used for data collection
+ and analysis, as well as experimenting and prototyping. It should not be used
+ to provide security for production systems!
+ .
+ This package includes:
+  - zcrypto/tls (formerly known as ZTLS): A research TLS library based on Golang
+  standard library crypto/tls that contains that speaks old TLS versions, export
+  ciphers, logs handshake messages, and is highly configurable. Many scary parts
+  are exposed as public variables. It is primarily used for data collection
+  - zcrypto/x509 A fork of the Golang stdlib crypto/x509 that adds the ability
+  to serialize certificates to JSON, and plays nice with CT.
+  - zcrypto/ct A fork of the Google Certificate Transparency Golang library,
+  designed to play nice with ZCrypto.
+ .
+ Documentation: https://godoc.org/github.com/zmap/zcrypto

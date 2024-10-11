@@ -1,5 +1,17 @@
-template-repository (1.0-1) unstable; urgency=medium
+golang-github-zmap-zcrypto (0.0~git20240512.0fef58d-2) unstable; urgency=medium
 
-  * Initial release
+  * No-change upload to aid testing migration
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Reinhard Tartler <siretart@tauware.de>  Sun, 30 Jun 2024 07:01:20 -0400
+
+golang-github-zmap-zcrypto (0.0~git20240512.0fef58d-1) unstable; urgency=medium
+
+  [ Peymaneh Nejad ]
+  * Initial release (Closes: #990275)
+
+  [ Reinhard Tartler ]
+  * Update to newer upstream release
+  * Bump Standards version
+  * Add myself to uploaders
+
+ -- Reinhard Tartler <siretart@tauware.de>  Wed, 19 Jun 2024 10:12:22 -0400
